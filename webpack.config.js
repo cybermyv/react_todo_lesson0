@@ -13,10 +13,14 @@ var config = {
   module : {
     loaders : [
       {
-        test : /\.js?/,
+        test : /\.js$/,
         include : APP_DIR,
-        loader : 'babel-loader'
-      }
+        loader : 'babel-loader',
+        exclude: /node_modules/
+      },
+       { test: /\.css$/, loader: "style-loader"},
+       { test: /\.css$/, loader: "css-loader"}
+       
     ]
   }
 };

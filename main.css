@@ -1,0 +1,8 @@
+.btn-finish{
+    cursor: pointer;
+}
+
+.btn-finish:hover{
+    border: 1px solid black;
+    
+}
