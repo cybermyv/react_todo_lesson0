@@ -1,22 +1,20 @@
 import React from 'react';
-//import main from './index';
 
-export default class AddTodo extends React.Component{
+export default class AddTodo extends React.Component {
 
+        render() {
+            return ( <div>
+                <label> Добавить элемент </label> <
+                input ref = "createInput" / >
+                <button onClick = { this.addTodo } > Добавить </button>  
+                </div>
+            );
+        }
+        addTodo = () => {
 
-    render(){
-        return (
-<div>
-        <label>Добавить элемент</label>   
-        <input ref="createInput"/>
-        <button onClick={this.addTodo}>Добавить</button>
-        </div>    
+            console.log(this.refs.createInput.value);
             
-        );
+            this.props.setNewTodoValue(this.refs.createInput.value);
+        }
     }
-addTodo =() =>{
-    
- console.log(this.refs.createInput.value);
- this.props.setNewTodoValue(this.refs.createInput.value);
-}
-}// class
+    // class

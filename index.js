@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddTodo from './add-todo';
+import ItemTodo from './item-todo';
 import TodoHeader from './todo-header';
 
 import styles from './main.css'
@@ -12,8 +13,8 @@ class Todo extends React.Component {
     super(props)
     
     this.state = {
-      list: [],
-      maxUnfinishedTasks : 5
+      list: []
+      
     }
   }
 
@@ -27,16 +28,16 @@ class Todo extends React.Component {
 
   
   
-  setItemFinished = (id)=>  {
-    this.setState(({ list }) => ({
-      list: list.map((item) => {
-        const newItem = item.id === id
-          ? Object.assign({}, item, { finished: true })
-          : item
-        return newItem
-      })
-    }))
-  }
+  // setItemFinished = (id)=>  {
+  //   this.setState(({ list }) => ({
+  //     list: list.map((item) => {
+  //       const newItem = item.id === id
+  //         ? Object.assign({}, item, { finished: true })
+  //         : item
+  //       return newItem
+  //     })
+  //   }))
+  // }
   
   setNewTodoValue = (value)=> {
     this.state.list.push({
@@ -55,27 +56,16 @@ class Todo extends React.Component {
       <div>
         <TodoHeader />
         <ul>
-          {this.state.list.map(item => (
-            <li
-              key={item.id}
-              style={item.finished ? { textDecoration: 'line-through' } : {}}
-            >
-              {item.id} - {item.title} <span className="btn-finish" onClick={() => {this.setItemFinished(item.id)}}> x </span>
-            </li>
-          ))}
+         <ItemTodo list = {this.state.list} />
         </ul>
-      
-          <AddTodo setNewTodoValue = {this.setNewTodoValue.bind(this)} />
+           <AddTodo setNewTodoValue = {this.setNewTodoValue.bind(this)} />
       </div>
       )
   }
 }
 
 ReactDOM.render(
-  <Todo
-    list = {[]}
-  //  maxUnfinishedTasks = '0'
-  />,
+  <Todo list = {[]} />,
   document.getElementById('root'),
 )
 
