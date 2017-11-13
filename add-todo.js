@@ -1,11 +1,17 @@
 import React from 'react';
 
 export default class AddTodo extends React.Component {
-    addTodo = () => {
-        console.log(this.refs.createInput.value);
-        
-        this.props.setNewTodoValue(this.refs.createInput.value);
+    state = {
+        value: '',
     }
+
+    addTodo = () => {
+        this.props.setNewTodoValue(this.state.value);
+        
+        this.setState({ value: '' })
+    }
+
+    handleInput = (event) => this.setState({ value: event.target.value })
 
     // COMMENT: Каноничный подход - располагать render последним 
     render() {
@@ -19,7 +25,7 @@ export default class AddTodo extends React.Component {
                     COMMENT: ref - специфичный момент, который мы будет разбирать позже,
                     к тому же такой вариант использования ref на данный момент deprecated
                 */}
-                <input ref="createInput" />
+                <input onChange={this.handleInput} value={this.state.value} />
                 <button onClick={this.addTodo}>
                     Добавить
                 </button>  
