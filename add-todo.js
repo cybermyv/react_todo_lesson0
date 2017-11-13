@@ -16,5 +16,4 @@ export default class AddTodo extends React.Component {
             
             this.props.setNewTodoValue(this.refs.createInput.value);
         }
-    }
-    // class
+    } // class

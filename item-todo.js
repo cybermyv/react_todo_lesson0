@@ -36,7 +36,7 @@ export default class ItemTodo extends React.Component {
                 for (let i=0; i<list.length; i++){
                     if(list[i].id === id){
                         list[i].finished = true;
-                        return list;
+                        return list[i];
                     }
                 }
             })

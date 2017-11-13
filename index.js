@@ -3,20 +3,26 @@ import ReactDOM from 'react-dom';
 import AddTodo from './add-todo';
 import ItemTodo from './item-todo';
 import TodoHeader from './todo-header';
+import CounterTodo from './counter-todo';
 
 import styles from './main.css'
 
-//import Textfield from './Textfield'
+
+
 
 class Todo extends React.Component {
   constructor (props) {
     super(props)
     
     this.state = {
-      list: []
-      
-    }
+       list: [],
+       maxUnfinishedTasks: '5'     
+     }
+
+     
   }
+
+  
 
   // componentDidMount= ()=> {
   //   if (this.state.list.length === 0) {
@@ -47,9 +53,24 @@ class Todo extends React.Component {
     });
 
     this.setState({list : this.state.list});
-    
+
     };
- 
+
+
+ componentDidUpdate = () =>{
+    
+let allTask = this.state.list.length; //-- всего задач
+
+//-- только активные
+let activeTask = allTask.filter((item)=>{
+  return item.finished === false
+}).length
+
+//-- в консоль
+console.log('Всего = ', allTask);
+console.log('Активные = ', activeTask);
+console.log('Выполненные = ', activeTask);
+ }//-- после того как компонент обновился - будем обновлять счетчики 
 
   render() {
     return (
@@ -59,6 +80,7 @@ class Todo extends React.Component {
          <ItemTodo list = {this.state.list} />
         </ul>
            <AddTodo setNewTodoValue = {this.setNewTodoValue.bind(this)} />
+           <CounterTodo />
       </div>
       )
   }
