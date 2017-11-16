@@ -7,17 +7,13 @@ import TodoHeader from './todo-header';
 import styles from './main.css';
 
 class Todo extends React.Component {
-   constructor(props) {
-     super(props);
+  constructor(props) {
+    super(props);
 
-     this.state = {
-       list: [],
-     };
-   }
-
-  // state = {
-  //   list: [],
-  // };
+    this.state = {
+      list: [],
+    };
+  }
 
   setNewTodoValue = value => {
     this.setState(({ list }) => ({
@@ -39,17 +35,13 @@ class Todo extends React.Component {
       <div>
         <ul>
           {this.state.list.map(item => (
-           <li key={item.id} >
-            < ItemTodo item={item}/>
-            </li> 
+            <li key={item.id}> <ItemTodo item={item} /></li>
           ))}
-          
         </ul>
-        <AddTodo  setNewTodoValue={this.setNewTodoValue}/>
+        <AddTodo setNewTodoValue={this.setNewTodoValue} />
       </div>
-    )
+    );
   }
 }
-
 
 ReactDOM.render(<Todo list={[]} />, document.getElementById('root'));
