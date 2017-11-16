@@ -1,19 +1,29 @@
 import React from 'react';
 
 export default class AddTodo extends React.Component {
+  state = { 
+      value: '', 
+    };
 
-        render() {
-            return ( <div>
-                <label> Добавить элемент </label> <
-                input ref = "createInput" / >
-                <button onClick = { this.addTodo } > Добавить </button>  
-                </div>
-            );
-        }
-        addTodo = () => {
+  addTodo = () => {
+    this.props.setNewTodoValue(this.state.value);
+ //  console.log(this.state.value);
+    this.setState({value: '' });
 
-            console.log(this.refs.createInput.value);
-            
-            this.props.setNewTodoValue(this.refs.createInput.value);
-        }
-    } // class
+ 
+  };
+
+  handleInput = event => {
+    this.setState({ value: event.target.value });
+   // console.log(event.target.value);
+  };
+
+  render() {
+    return (
+      <div>
+        <input onChange={this.handleInput} value={this.state.value} />
+        <button onClick={this.addTodo}>Добавить</button>
+      </div>
+    );
+  }
+}

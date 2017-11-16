@@ -1,0 +1,66 @@
+  // componentDidMount= ()=> {
+  //   if (this.state.list.length === 0) {
+  //     this.setState({
+  //       list: this.props.list,
+  //     })
+  //   }
+  // }
+
+  // setItemFinished = (id)=>  {
+  //   this.setState(({ list }) => ({
+  //     list: list.map((item) => {
+  //       const newItem = item.id === id
+  //         ? Object.assign({}, item, { finished: true })
+  //         : item
+  //       return newItem
+  //     })
+  //   }))
+  // }
+// list={[
+//   { id: 1, title: 'Дело1', finished: false },
+//   { id: 2, title: 'Дело2', finished: true },
+//   { id: 3, title: 'Дело3', finished: false },
+//↻
+// ]}
+
+нельзя так делать, потому что пуш изменяет значение массива
+ setNewTodoValue = value => {
+    this.state.list.push({
+      id: Math.floor(Math.random() * 1000000),
+      title: value,
+      finished: false,
+    });
+
+    this.setState({ list: this.state.list });
+  };
+
+  addTodo = () => {
+      так ref использовать запрещено
+    console.log(this.refs.createInput.value);
+
+    this.props.setNewTodoValue(this.refs.createInput.value);
+  };
+
+
+
+
+      </div>
+
+      // <div>
+      //   {this.props.list.map(item => (
+      //     <li
+      //       key={item.id}
+      //       style={item.finished ? { textDecoration: 'line-through' } : {}}
+      //     >
+      //       {item.id} - {item.title}
+      //       <span
+      //         className="btn-finish"
+      //         onClick={() => {
+      //           this.setItemFinished(item.id);
+      //         }}
+      //       >
+      //         x
+      //       </span>
+      //     </li>
+      //   ))}
+      // </div>
