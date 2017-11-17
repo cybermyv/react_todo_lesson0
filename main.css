@@ -1,8 +1,14 @@
-.btn-finish{
+.btn-finish {
     cursor: pointer;
 }
 
-.btn-finish:hover{
+.btn-finish:hover {
     border: 1px solid black;
+}
+
+.item-container {
     
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }

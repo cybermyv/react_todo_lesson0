@@ -1,21 +1,20 @@
 import React from 'react';
 
 export default class AddTodo extends React.Component {
-  state = { 
-      value: '', 
-    };
+  state = {
+    value: '',
+  };
 
   addTodo = () => {
     this.props.setNewTodoValue(this.state.value);
- //  console.log(this.state.value);
-    this.setState({value: '' });
 
- 
+    // console.log(this.state.value);
+    this.setState({ value: '' });
   };
 
   handleInput = event => {
     this.setState({ value: event.target.value });
-   // console.log(event.target.value);
+    // console.log(event.target.value);
   };
 
   render() {
